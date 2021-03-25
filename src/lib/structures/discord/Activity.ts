@@ -75,17 +75,13 @@ export class Activity extends BaseStructure implements IActivity {
   public instance?: boolean;
   public flags?: ActivityFlags[];
 
-  constructor(public client: Client, data: IActivity) {
-    super();
+  constructor(client: Client, data: IActivity) {
+    super(client);
 
     this.name = data.name;
     this.type = data.type;
     this.createdAt = data.createdAt;
 
-    const presentOptionalData = this._parseOptionalData.call(this, data);
-    const keys = Object.keys(presentOptionalData) as (keyof IActivity)[];
-
-    if (keys.length)
-      for (const key of keys) this[key] = presentOptionalData[key] as never;
+    this._parseOptionalData.call(this, data);
   }
 }

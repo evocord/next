@@ -1,5 +1,5 @@
 {
-  "name": "evocord",
+  "name": "@evocord/next",
   "version": "1.0.0",
   "description": "A modular discord API wrapper",
   "main": "dist/bundle.js",

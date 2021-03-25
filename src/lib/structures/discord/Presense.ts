@@ -8,3 +8,5 @@ export interface IPresense {
   status: PresenseStatus;
   afk: boolean;
 }
+
+export class Presense {}

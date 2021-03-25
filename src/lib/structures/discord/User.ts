@@ -37,18 +37,14 @@ export class User extends BaseStructure implements IUser {
   public email?: string;
   public premiumType?: Premium;
 
-  constructor(public client: Client, data: IUser) {
-    super();
+  constructor(client: Client, data: IUser) {
+    super(client);
 
     this.id = data.id;
     this.username = data.username;
     this.discriminator = data.discriminator;
     this.avatar = data.avatar;
 
-    const presentOptionalData = this._parseOptionalData.call(this, data);
-    const keys = Object.keys(presentOptionalData) as (keyof IUser)[];
-
-    if (keys.length)
-      for (const key of keys) this[key] = presentOptionalData[key] as never;
+    this._parseOptionalData.call(this, data);
   }
 }
